@@ -20,7 +20,7 @@
     "grunt": "^0.4.5"
   },
   "scripts": {
-    "install: cd blackjack && npm install && grunt build",
+    "install": "cd blackjack && npm install && grunt build",
     "start": "node express-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
