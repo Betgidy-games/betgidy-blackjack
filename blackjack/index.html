@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Card Game: BlackJack</title>
+
+    <meta name="viewport" content="user-scalable=0">
+    <!--meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"-->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- build:css css/blackjack.css -->
+  	<link rel="stylesheet" href="css/blackjack.css">
+    <!-- endbuild -->
+  </head
+>
+  <body>
+    <div id="container">
+        <div id="game-status">
+            <span class="demo">PLAY FOR FUN</span>
+        </div>
+        <div id="bets-limits">
+            <div id="bets-limit-min">Min: </div>
+            <div id="bets-limit-max">Max: </div>
+        </div>
+    	<div id="dealer">
+    		<div id="dealers-hand" class="hand"></div>
+    		<div id="hole-card"></div>
+    	</div>
+
+    	<div id="stack">
+    	</div>
+
+    	<div id="final-message">
+         <div id="final-message-box"></div>
+        </div>
+
+    	<div id="messages">
+    		<div id="bet-warning"></div>
+    	</div>
+
+        <div id="chips">
+            <div class="arrow">
+                <span class="push-text">Place bets</span>
+                <div class="arrow-img"><img src="img/gold-arrow.png"></img></div>
+            </div>
+            <div id="chip1" class="casino-chip chip1"></div>
+            <!-- div class="casino-chip chip2" data-value="2"></div -->
+            <div id="chip2" class="casino-chip chip3"></div>
+            <!-- div class="casino-chip chip4" data-value="4"></div -->
+            <div id="chip3" class="casino-chip chip5"></div>
+        </div>
+
+    	 <div id="players">
+    	 	<div class="actual-players-hand hand">
+                <div id="insurance-bet">
+                  <div id="chip1" class="casino-chip chip1 bet-chip"></div>
+                  <span class="chips-counter"></span>
+                </div>
+                <!--div class="active-hand"><img src="img/gold-arrow.png"></img></div-->
+                <div id="players-chips">
+                    <div class="players-chips-stack">
+                        <span class="chips-counter"></span>
+                        <span class="bets-annulate assets chips-cancel"></span>
+                    </div>
+                </div>
+            </div>
+            <!--div class="handLeft hand"></div>
+            <div class="handRight hand"></div-->
+    	 </div>
+
+
+	 	<div id="buttons">
+	 		<div id="start-button" class="button greyed deactivated"><span class="btn-text">Deal</span></div>
+	 		<div id="new-game" class="button hidden"><span class="btn-text">New</span></div>
+	 		<div id="hit" class="button hidden"><span class="btn-text">Hit</span></div>
+	 		<div id="stand" class="button hidden"><span class="btn-text">Stand</span></div>
+            <div id="double" class="button hidden"><span class="btn-text">Double</span></div>
+            <div id="split" class="button hidden"><span class="btn-text">Split</span></div>
+            <div id="surrender" class="button hidden"><span class="btn-text">Surrender</span></div>
+            <div id="no-insure" class="button hidden"><span class="btn-text">No</span></div>
+            <div id="yes-insure" class="button hidden"><span class="btn-text">Yes</span></div>
+	 	</div>
+
+        <div id="setting-buttons">
+            <!--div id="start-button" class="button greyed deactivated"><span class="btn-text">Deal</span></div-->
+            <!--div id="audio" class="button"><span class="btn-text">Audio</span></div>
+            <div id="settings" class="button"><span class="btn-text">Settings</span></div-->
+            <div id="audio" class="button"><span class="btn-audio"></span></div>
+            <div id="settings" class="button"><span class="btn-setup"></span></div>
+        </div>
+
+
+		<div id="bottom-strip">
+			<span class="absolute top left small">Play for fun</span>
+			Balance: <span id="cash"></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			Bet:<span id="bet"></span>
+            <!--span id="bets-limits">
+                <span id="bets-limit-min">Min: 1</span>
+                <span id="bets-limit-max">Max: 10</span>
+            </span-->
+
+			<span class="absolute right small emgidy-logo">Emgidy</span>
+		</div>
+	</div>
+
+    <div style="display:none" id="pasteboard">
+        <!--img style="display:none" id="card-back" width="179px" height="250px" src="img/PNG/back_blue.png"-->
+        <img style="display:none" id="card-back" width="105px" height="145px" src="img/PNG/back_blue.png">
+
+    </div>
+
+    <!-- script src="jq.ui.min.js"></script -->
+    <!--<script src="af.touchEvents.js"></script>
+    <script src="af.touchLayer.js"></script>
+    <script src="af.desktopBrowsers.js"></script>-->
+    <!-- script src="viewporter.js"></script -->
+    <!-- script src="yepnope.js"></script -->
+    <!-- script src="blackjack.js"></script -->
+    <!--script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenMax.min.js"></script-->
+
+    <!-- build:js js/combined.js -->
+    <script src="js/libraries/appframework.min.js"></script>
+    <script src="js/libraries/appframework.ui.min.js"></script>
+    <script src="js/libraries/af.css3animate.js"></script>
+    <script src="js/libraries/af.touchEvents.js"></script>
+    <script src="js/libraries/screenfull.js"></script>
+    <script src="js/libraries/velocity.min.js"></script>
+    <script src="js/libraries/howler.min.js"></script>
+    <script src="js/utils/layoutUtils.js"></script>
+	<script src="js/utils/blackjack-helpers.js"></script>
+    <script src="js/utils/mobileEvents.js"></script>
+	<script src="js/model/blackjack-model.js"></script>
+	<script src="js/controller/blackjack-controller.js"></script>
+    <script src="js/view/blackjack-view.js"></script>
+    <script src="js/blackjack-start.js"></script>
+
+    <!-- endbuild -->
+  </body>
+</html>

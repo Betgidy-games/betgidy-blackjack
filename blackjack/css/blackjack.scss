@@ -1,0 +1,852 @@
+@import "compass";
+/*$card_width: 179px;
+$card_height: 250px;*/
+$card_width: 105px;
+$card_height: 145px;
+$card_shift: 6px;
+$chip_width: 64px;
+$chip_height: 64px;
+$chip_cancel_button_width: 24px;
+$chip_cancel_button_height: 24px;
+
+body {
+	-webkit-touch-callout: none;
+	-webkit-text-size-adjust: none;
+	-webkit-user-select: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	margin: 0px;
+	padding: 0px;
+
+	//width: 100%;
+	//height: 101%;
+	height: 100vh;
+	background:url('../img/background_2x.jpg') fixed no-repeat;
+	background-size: cover;
+	//background-size: 100% 100%;
+	//position: absolute;
+	//overflow: hidden;
+	//background-image: 600px 682px;
+	//background: green;
+	font-family: sans-serif;
+	overflow: hidden;
+}
+
+#game-status{
+	width: 280px;
+	height: 74px;
+	transform: rotate(-41deg);
+	top: 0px;
+	left: -61px;
+	position: absolute;
+	// needs latest Compass, add '@import "compass"' to your scss
+	background-color: #ed1c24; // Old browsers
+	@include filter-gradient(#ed1c24, #be1e2d, vertical); // IE6-9
+	@include background-image(linear-gradient(top,  #ed1c24 0%,#be1e2d 100%));
+	border: 1px solid #6A0000;
+
+	.demo {
+		font-size: 1em;
+		color: #fff;
+		color: #FFF;
+		top: 27px;
+		left: 55px;
+		//text-align: center;
+		/*width: 100%;*/
+		position: absolute;
+	}
+
+}
+#container {
+	/*
+	position: relative;
+	height: 100%; 
+	width: 100%;
+	*/
+}
+
+
+#dealer {
+	position: absolute;
+	top: 12px;
+	left: 50%;
+	margin-left: -1.2*$card_width;
+	min-height: $card_height;
+	min-width: 2.4*$card_width;
+	z-index: 99;
+}
+
+#dealers-hand {
+	//left: 100px;
+}		
+
+/*.actual-players-hand {
+	transform: perspective(400px) rotateX(15deg);
+	transform-style: preserve-3d;	
+}
+*/
+#player, #players {
+	position: absolute;
+	bottom: 5em;
+	min-height: $card_height;
+	min-width: 1.6*$card_width;
+	left: 50%;
+	margin-left: -.5*$card_width;
+	transform: perspective(400px) rotateX(15deg);
+	transform-style: preserve-3d;
+}
+
+#players-hand {
+	bottom: 0;
+}
+
+#players .hand {
+	opacity: 0.5;
+}
+.hand {
+	position: relative;
+	margin-right: 150px;
+	float: left;
+	//position: absolute;
+	//display: block;
+}
+
+#bets {
+	font-size: 36px;
+	position: absolute;
+	bottom: 40%;
+	left: 16px;
+}
+
+#stack {
+	position: absolute;
+	top: 12px;
+	//right: 12px;
+	right: 20%;
+	transform: rotate(-60deg);
+	/*
+	background: url('../img/stack.png') no-repeat;
+	background-image-size: 100% 100%;
+	height: 250px;
+	width: 186px;
+	*/
+}
+
+.card {
+	width: $card_width;
+	height: $card_height;
+	position: absolute;
+	z-index: -1;
+}
+
+.counter {
+	position: absolute;
+	font-size: 1em;
+	
+	color: white;
+	padding: 3px 5px;
+	right: -10px;
+	top: -8px;
+	border-radius: 6px;
+	// needs latest Compass, add '@import "compass"' to your scss
+	background-color: rgb(0,0,0); // Old browsers
+	@include filter-gradient(#000000, #000000, vertical); // IE6-9
+	@include background-image(linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(35,31,32,1) 20%,rgba(35,31,32,1) 80%,rgba(0,0,0,1) 100%,rgba(0,0,0,1) 100%));
+
+	//original
+	//background: black;
+}
+
+
+#chips-counter, .chips-counter {
+	position: absolute;
+	right: 0;	
+	top: -.2em;		
+	//font-size: 1em;
+	font-size: .825em;
+
+	color: white;
+	padding: 3px 5px;
+	display: none;
+	border-radius: 6px;
+	font-weight: bold;
+	// needs latest Compass, add '@import "compass"' to your scss
+	background-color: rgb(0,0,0); // Old browsers
+	@include filter-gradient(#000000, #000000, vertical); // IE6-9
+	@include background-image(linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(35,31,32,1) 20%,rgba(35,31,32,1) 80%,rgba(0,0,0,1) 100%,rgba(0,0,0,1) 100%));
+	
+	//original
+	//background: black;
+}
+
+#messages {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top: 35%;
+	left: 0%;
+	font-size: 48px;
+	font-family: sans-serif;
+}
+
+#setting-buttons
+{
+	position: absolute;
+	left: -60px;
+	right:none;
+	bottom: 10%;
+	overflow:hidden;
+	-webkit-transition: right 5s; /* For Safari 3.1 to 6.0 */
+    transition: right 5s;
+    width: 235px;
+}
+
+#setting-buttons .button {
+	left: -80px;
+
+	.btn-text {
+		padding: 16px 95px;
+		position: absolute;
+	}
+	.btn-audio {
+		background: url("../img/audio_on.png") no-repeat;
+		width:75%;
+		height:75%;
+		background-size:contain;
+		display: inline-block;
+		margin: 8px 159px;
+	}
+	.btn-setup{
+		background: url("../img/setup.png") no-repeat;
+		width:87%;
+		height:87%;
+		background-size:contain;
+		display: inline-block;
+		margin: 5px 153px;
+	}
+
+	&:active, &:focus,  &:hover{
+		left: -10px;
+	}
+
+	}
+#buttons {
+	position: absolute;
+	/*right: 16px;*/
+	right: 0px;
+	/* bottom: 12%; */
+	/*top: 45%;*/
+	//top: 35%;
+	top: 35%;
+	overflow:hidden;
+
+	-webkit-transition: right 5s; /* For Safari 3.1 to 6.0 */
+    transition: right 5s;
+}
+
+.btn-text {
+	padding: 16px 30px;
+	position: absolute;
+}
+.button {
+	//color: black;
+	//background: white;
+	//border: 3px solid #555;
+	
+	//width: 186px;
+	//width: 165px;
+	//font-size: 24px;
+	font-size: 30px;
+	font-family: sans-serif;
+	//text-align: center;
+
+	right: -80px;
+	//padding: 10px 6px;
+	//margin-bottom: 36px;
+	//margin-bottom: 18px;
+	margin-bottom: 10px;
+	cursor: pointer;
+
+	display: inline-block;
+	position: relative;
+	
+	/*background: url('../img/buttons_image.png') no-repeat top left;
+	background-position: 0px -188px; 
+	width: 183px; 
+	height: 48px; 
+	padding: 12px 6px 0px 0px;*/
+	//background: url('../img/btn_img.png') no-repeat top left;
+
+	// needs latest Compass, add '@import "compass"' to your scss
+	background-color: #dd813d; // Old browsers
+	@include filter-gradient(#dd813d, #c54320, vertical); // IE6-9
+	@include background-image(linear-gradient(top,  #dd813d 0%,#c54320 100%));
+
+
+
+	width: 231px;
+	height: 65px;
+	//background-size: contain;
+
+	border: 1px solid #FBE3D6;
+	border-radius: 10px;
+
+	color: #FFF;
+	//&:focus, &:active, &:hover{
+	//	background-position: 0px 0px; width: 183px; height: 48px; 
+	//}
+	&:focus, &:active, &:hover{
+		// needs latest Compass, add '@import "compass"' to your scss
+		background-color: #c54320; // Old browsers
+		@include filter-gradient(#c54320, #c54320, vertical); // IE6-9
+		@include background-image(linear-gradient(top,  #c54320 0%,#c54320 100%));
+
+		box-shadow: inset 0px 0px 25px 0px rgba(0,0,0,0.75);
+
+		right: -10px;
+
+
+	}
+	
+}
+
+
+.greyed {
+	color: gray;
+	//background: url('../img/buttons_image.png') no-repeat top left;
+	//background: url('../img/btn_img.png') no-repeat top left;
+
+	// needs latest Compass, add '@import "compass"' to your scss
+	background-color: #3a373e; // Old browsers
+	@include filter-gradient(#3a373e, #2c292f, vertical); // IE6-9
+	@include background-image(linear-gradient(top,  #3a373e 0%,#2c292f 100%));
+
+	border: 2px solid #6D6E71;
+	border-radius: 10px;
+	cursor:hand;
+
+	/*background-position: 0px -127px; */
+	/*width: 183px; 
+	height: 48px; 
+	padding: 12px 6px 0px 0px;
+	&:focus, &:active, &:hover{
+		background-position: 0px -127px; width: 183px; height: 48px; 
+	}*/
+	width: 231px;
+	height: 65px;
+
+	&:focus, &:active, &:hover{
+		right: -80px;
+		box-shadow: none;
+		background: none;
+
+	}
+	//background-size: contain;
+}
+
+
+#bottom-strip, #bottom-strip-second {
+	position: absolute;
+	//original
+	//background: gray;
+	//background-image:-moz-linear-gradient(50% 0% -90deg,rgba(136,136,136,0.66) 0%,rgb(119,119,119) 100%); 
+	//background-image:-webkit-gradient(linear,50% 0%,50% 100%,color-stop(0, rgba(136,136,136,0.66)),color-stop(1, rgb(119,119,119)));
+	//background-image:-webkit-linear-gradient(-90deg,rgba(136,136,136,0.66) 0%,rgb(119,119,119) 100%);
+	//background-image:linear-gradient(-90deg,rgba(136,136,136,0.66) 0%,rgb(119,119,119) 100%);
+
+	left: 0;
+	bottom: -1px;
+	width: 100%;
+	text-align: center;
+	font-size: 2rem;
+	font-family: Verdana, sans-serif;
+	vertical-align: middle;
+	//color: #222;
+	/* text-shadow: 1px 1px 1px #333; */
+	padding: .325rem 0;
+	
+	// needs latest Compass, add '@import "compass"' to your scss
+	// needs latest Compass, add '@import "compass"' to your scss
+	//background-color: rgb(204,204,204); // Old browsers
+	//@include filter-gradient(#cccccc, #cccccc, vertical); // IE6-9
+	//@include background-image(linear-gradient(top,  rgba(204,204,204,1) 0%,rgba(35,31,32,1) 5%,rgba(0,0,0,1) 21%,rgba(0,0,0,1) 80%,rgba(35,31,32,1) 99%,rgba(204,204,204,1) 100%));
+
+	// needs latest Compass, add '@import "compass"' to your scss
+	background-color: #2c292f; // Old browsers
+	@include filter-gradient(#2c292f, #000000, vertical); // IE6-9
+	@include background-image(linear-gradient(top,  #2c292f 0%,#595660 2%,#3c373e 4%,#000000 100%));
+
+
+
+	border-top: 1px solid #000;
+
+	color: #cccccc;
+}
+
+/*
+#bottom-strip-second {
+	animation-name: fadeIn;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+
+	-webkit-animation-name: fadeIn;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+}
+*/
+
+.focus {
+	-webkit-box-shadow: 16px 16px 14px rgba(50, 50, 50, 0.59);
+	-moz-box-shadow:    16px 16px 14px rgba(50, 50, 50, 0.59);
+	box-shadow:         16px 16px 14px rgba(50, 50, 50, 0.59);
+	z-index: -1;
+	opacity: 1;
+}
+.active-hand {
+	display: none;
+}
+/*.focus > .active-hand {
+	display: inline!important;
+	float: left;
+	transform: rotate(149deg);
+	left: -35%;
+	top: 10%;
+	position: absolute;
+	-webkit-animation: active-arrow 1s;
+	-webkit-animation-iteration-count: infinite;
+	animation: active-arrow 1s;
+	animation-iteration-count: infinite;
+}*/
+
+.absolute {
+	position: absolute;
+}
+
+.top {
+	top: 6px;
+}
+
+.left {
+	left: 12px;
+}
+
+.right {
+	right: 16px;
+}
+
+.small {
+	font-size: 12px;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.normal {
+	font-size: 16px;
+}
+
+.middle-size {
+	font-size: 3rem;
+}
+
+.hidden {
+	display: none;
+}
+
+.invisible {
+	visibility: hidden;
+}
+
+.emgidy-logo {
+	font-variant: small-caps;
+}
+
+#hole-card {
+	position: absolute;
+	//left: 440px;
+	right: 0px;
+	top: 0px;
+	display: inline-block;
+	display: none;
+}
+
+
+#final-message {
+	position: absolute;
+	top: 35%;
+	/*left: 20%;
+	right: 20%;
+	min-width: 20rem;*/
+	width: 100%;
+	//max-width: 30rem;
+
+	/* display: inline-block; */
+	display: none;
+	text-align: center;
+	font-size: 2rem;
+	/*background: white;*/
+	padding: 1rem 1rem 1.5rem 1rem;
+	/*border-radius: 12px;*/
+	//border: 1px solid gray;
+	z-index: 10000;
+	//background: maroon;
+	color: white;
+	opacity: .95;
+	//margin-top: -4rem;
+	
+	/*background-color: rgb(0,0,0); // Old browsers
+	@include filter-gradient(#000000, #000000, vertical); // IE6-9
+	@include background-image(linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(35,31,32,1) 20%,rgba(35,31,32,1) 80%,rgba(0,0,0,1) 100%,rgba(0,0,0,1) 100%));*/
+
+	// needs latest Compass, add '@import "compass"' to your scss
+	@include filter-gradient(#e64548, #e60000, vertical); // IE6-9
+	@include background-image(linear-gradient(top,  rgba(69,72,77,0.9) 0%,rgba(0,0,0,0.9) 100%));
+
+
+	border-top: 1px solid #222;
+	border-bottom: 1px solid #222;
+}
+
+
+#chips {
+	position: absolute;
+	//left: 4rem;
+	right: 16px;
+	bottom: 6rem;
+
+	.arrow {
+		text-align: center;
+		margin-bottom: 10px;
+		color: #FFF;
+		font-size: 1.5em;
+	}
+	.arrow-img {
+		width: 24px;
+		height: 24px;
+		margin: 0 auto;
+		padding: 5px 0 20px 0;
+		position: relative;
+		-webkit-animation: arrow-animate 1s;
+		-webkit-animation-iteration-count: infinite;
+		animation: arrow-animate 1s;
+		animation-iteration-count: infinite;
+	}
+}
+
+@-webkit-keyframes arrow-animate {
+    0% {top: 0px;}
+    50% {top: 20px;}
+    100% {top: 0px;}
+}
+@keyframes arrow-animate {
+    0% {top: 0px;}
+    50% {top: 20px;}
+    100% {top: 0px;}
+}
+
+
+#bet-warning {
+	//font-size: 24px;
+	font-size: 2rem;
+	color: maroon;
+}
+
+#bet-state {
+	position: absolute;
+}
+
+#chips-bet-stack {
+	text-align: center;
+}
+
+
+
+.casino-chip {
+	background:url("../img/chip_colors_64.png") top left no-repeat; 
+	// original-images
+	//background:url("../img/casino_chips_64.png") top left no-repeat; 
+	display: inline-block;
+	cursor: pointer;
+}
+.assets {
+	background:url("../img/chip_colors_64.png") top left no-repeat;
+	// original-images
+	//background:url("../img/casino_chips_64.png") top left no-repeat;  
+	display: inline-block;
+}
+
+// .chips-cancel{ width:24px; height:24px; background-position:-10px -10px; }
+// .chip1{ width:96px; height:97px; background-position:-44px -10px; }
+// .chip2{ width:96px; height:97px; background-position:-150px -10px; }
+// .chip3{ width:96px; height:97px; background-position:-256px -10px; }
+// .chip4{ width:96px; height:97px; background-position:-362px -10px; }
+// .chip5{ width:96px; height:97px; background-position:-468px -10px; }
+
+// .chips-cancel{ width:18px; height:18px; background-position:-10px -10px; }
+// .chip5{ width:48px; height:47px; background-position:-38px -10px; }
+// .chip4{ width:48px; height:47px; background-position:-96px -10px; }
+// .chip3{ width:48px; height:47px; background-position:-154px -10px; }
+// .chip2{ width:48px; height:47px; background-position:-212px -10px; }
+// .chip1{ width:48px; height:47px; background-position:-270px -10px; }
+
+// original-images
+//.casino_chips_64{ background:url("casino_chips_64.png") top left no-repeat; }
+//.chips-cancel{ width: $chip_cancel_button_width; height: $chip_cancel_button_height; background-position:-10px -10px; }
+//.chip5{ width: $chip_width; height: $chip_height; background-position:-44px -10px; }
+//.chip4{ width: $chip_width; height: $chip_height; background-position:-118px -10px; }
+//.chip3{ width: $chip_width; height: $chip_height; background-position:-192px -10px; }
+//.chip2{ width: $chip_width; height: $chip_height; background-position:-266px -10px; }
+//.chip1{ width: $chip_width; height: $chip_height; background-position:-340px -10px; }
+
+
+.casino_chips_64{ background:url("chip_colors_64.png") top left no-repeat; }
+.chips-cancel{ width: $chip_cancel_button_width; height: $chip_cancel_button_height; background-position:-370px 0px; }
+.chip5{ width: $chip_width; height: $chip_height; background-position: -222px 0px; }
+.chip4{ width: $chip_width; height: $chip_height; background-position: -148px 0px; }
+.chip3{ width: $chip_width; height: $chip_height; background-position: -74px 0px; }
+.chip2{ width: $chip_width; height: $chip_height; background-position: 0px 0px; }
+.chip1{ width: $chip_width; height: $chip_height; background-position: -296px 0px; }
+
+
+
+// .chip-empty{
+// 	width:96px; 
+// 	height:97px;
+// 	background: none;
+// }
+
+.chip-empty{
+	width:$chip_width; 
+	height:$chip_height;
+	background: none;
+}
+
+
+#players-chips {
+	position: absolute;
+	// bottom: .7*$chip_height;
+	// left: .5*$card_width;
+	/*bottom: 1.5*$chip-height;*/
+	bottom: 1*$chip-height;
+	left: -1*$chip-width;
+	margin-left: -38px;
+
+	.casino-chip {
+		position: absolute;
+	}
+}
+
+#bets-annulate, .bets-annulate{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: $chip_cancel_button_width; 
+	height: $chip_cancel_button_height;
+	display: none;
+	cursor: pointer;
+}
+
+
+
+// #bets-annulate, .bets-annulate{
+// 	position: absolute;
+// 	bottom: 0;
+// 	right: 0;
+// 	width:24px; 
+// 	height:24px;
+// 	display: none;
+// }
+
+
+
+
+.empty-card {
+	width: $card_width;
+	height: $card_height;
+	/* display: inline-block; */
+	border: 1px solid white;
+	border-radius: 6px;
+	position: absolute;
+	z-index: -1;
+	padding: 0 6px;
+
+	span {
+		display: inline-block;
+		//position: absolute;
+		//bottom: -36px;
+		//top: 25%;
+		margin-top: 30%;
+
+		font: sans-serif;
+		/*font-weight: bold;*/
+		//font-size: 24px;
+		font-size: 15px;
+		color: white;
+		text-align: center;
+		//width: 100%;
+		//font-weight: bold;
+	}
+}
+
+
+#last-card-in-stack {
+	perspective: 800px;
+	-webkit-perspective: 800px;
+	width: $card_width;
+	height: $card_height;
+}
+
+.cards-for-flip {
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	transition: transform 1s;
+	-webkit-transition: -webkit-transform 1s;
+
+	.front, .back {
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		height: $card_height;
+		width: $card_width;
+		position: absolute;
+	}
+
+	.back {
+		-webkit-transform: rotateY(180deg);
+		   -moz-transform: rotateY(180deg);
+		    -ms-transform: rotateY(180deg);
+		     -o-transform: rotateY(180deg);
+		        transform: rotateY(180deg);
+	}
+
+}
+
+
+.flipped {
+	-webkit-transform: rotateY(180deg);
+	   -moz-transform: rotateY(180deg);
+	    -ms-transform: rotateY(180deg);
+	     -o-transform: rotateY(180deg);
+	        transform: rotateY(180deg);
+}
+
+.badge {
+	/*position: absolute;
+	font-size: 10px;
+	top: -8px;
+	right: 0px;
+	//background: maroon;
+	//padding: 2px;
+	//color: white;
+	//border: 1px solid black;
+	//border-radius: 4px;
+	//font-weight: bold;
+	
+	background: url('../img/buttons_image.png') no-repeat top left;
+	background-position: 0px -249px; 
+	width: 24px; 
+	height: 21px; 
+	//padding: 12px 6px 0px 0px;
+	text-indent: -10000px;*/
+	position: absolute;
+	left: -60px;
+	top: 6px;
+	background: url('../img/gold-arrow.png') no-repeat top left;
+	background-size: contain;
+	width: 20px;
+	transform: rotate(149deg);
+	text-indent: -100000px;
+
+	-webkit-animation: active-arrow 1s;
+	-webkit-animation-iteration-count: infinite;
+	animation: active-arrow 1s;
+	animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes active-arrow {
+    0% {left: -60px;}
+    50% {left: -40px;}
+    100% {left: -60px;}
+}
+
+@keyframes active-arrow {
+    0% {left: -60px;}
+    50% {left: -40px;}
+    100% {left: -60px;}
+}
+
+
+#bets-limits {
+	/*margin-left: .2em;*/
+	margin-left: 4.2em;
+	width: 100px;
+	// needs latest Compass, add '@import "compass"' to your scss
+	@include filter-gradient(#e64548, #e60000, vertical); // IE6-9
+	@include background-image(linear-gradient(top,  rgba(69,72,77,0.5) 0%,rgba(0,0,0,0.5) 100%));
+
+	border: 1px solid #2c2c2c;
+	border-bottom: 2px solid #73490F;
+
+	text-align: center;
+	padding: 5px 10px;
+	color: #FFF;
+	//transform: skew(45deg,-42deg);
+	transform: rotate(-20deg);
+
+	box-shadow: -3px -3px 12px 0px rgba(0,0,0,0.75);
+
+	span {
+		font-size: .4em;
+		position: absolute;
+	}
+
+	#bets-limit-min {
+		top: .8em;
+	}
+
+	#bets-limit-max {
+		bottom: .8em;
+	}
+}
+
+
+.orientation-warning-mask, #orientation-warning-mask {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	//background: #231F20 url("../img/rotate-screen.jpg");
+	background: #231F20 url("../img/rotate-screen-small.png");
+	z-index: 10000;
+
+	-webkit-background-size: 100% 100%;       
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%; 
+    background-size: 100% 100%;	
+
+	-o-background-size: cover;
+	-moz-background-size: cover;	 
+	-webkit-background-size: cover; 
+	background-size: cover;
+
+	-o-background-position: center;	
+	-moz-background-position: center;
+	-webkitbackground-position: center;
+	background-position: center;
+}
+
+
+/* Portrait orientation */
+@media only screen and (orientation: landscape) {
+	#orientation-warning-mask {
+		display: none;
+	}
+}
+
+/* Landscape orientation */
+@media only screen and (orientation: portrait) {
+	#orientation-warning-mask {
+		display: block;
+		//background-position: center center;
+		//background-size: 100% 100%;
+	}
+}

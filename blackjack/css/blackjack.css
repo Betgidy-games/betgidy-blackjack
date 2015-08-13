@@ -1,0 +1,909 @@
+/*$card_width: 179px;
+$card_height: 250px;*/
+/* line 12, blackjack.scss */
+body {
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  background: url("../img/background_2x.jpg") fixed no-repeat;
+  background-size: cover;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+/* line 34, blackjack.scss */
+#game-status {
+  width: 280px;
+  height: 74px;
+  transform: rotate(-41deg);
+  top: 0px;
+  left: -61px;
+  position: absolute;
+  background-color: #ed1c24;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFED1C24', endColorstr='#FFBE1E2D');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ed1c24), color-stop(100%, #be1e2d));
+  background-image: -webkit-linear-gradient(top, #ed1c24 0%, #be1e2d 100%);
+  background-image: -moz-linear-gradient(top, #ed1c24 0%, #be1e2d 100%);
+  background-image: -o-linear-gradient(top, #ed1c24 0%, #be1e2d 100%);
+  background-image: linear-gradient(top, #ed1c24 0%, #be1e2d 100%);
+  border: 1px solid #6A0000;
+}
+/* line 47, blackjack.scss */
+#game-status .demo {
+  font-size: 1em;
+  color: #fff;
+  color: #FFF;
+  top: 27px;
+  left: 55px;
+  /*width: 100%;*/
+  position: absolute;
+}
+
+/* line 59, blackjack.scss */
+#container {
+ /* overflow: hidden;*/
+  /*
+  position: relative;
+  height: 100%; 
+  width: 100%;
+  */
+}
+
+/* line 68, blackjack.scss */
+#dealer {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  margin-left: -126px;
+  min-height: 145px;
+  min-width: 252px;
+  z-index: 99;
+}
+
+.actual-players-hand {
+  opacity: 1!important;
+	/*transform: perspective(400px) rotateX(15deg);
+	transform-style: preserve-3d;	*/
+}
+
+/* line 87, blackjack.scss */
+#player, #players {
+  position: absolute;
+  bottom: 5em;
+  min-height: 145px;
+  min-width: 168px;
+  left: 50%;
+  margin-left: -52.5px;
+  transform: perspective(400px) rotateX(15deg);
+  transform-style: preserve-3d;
+}
+
+/* line 98, blackjack.scss */
+#players-hand {
+  bottom: 0;
+}
+
+#players .hand {
+  opacity: 0.5;
+}
+/* line 102, blackjack.scss */
+.hand {
+
+  margin-right: 150px;
+  float: left;
+}
+
+/* line 107, blackjack.scss */
+#bets {
+  font-size: 36px;
+  position: absolute;
+  bottom: 40%;
+  left: 16px;
+}
+
+/* line 114, blackjack.scss */
+#stack {
+  position: absolute;
+  top: 12px;
+  right: 20%;
+  transform: rotate(-60deg);
+  /*
+  background: url('../img/stack.png') no-repeat;
+  background-image-size: 100% 100%;
+  height: 250px;
+  width: 186px;
+  */
+}
+
+/* line 128, blackjack.scss */
+.card {
+  width: 105px;
+  height: 145px;
+  position: absolute;
+  z-index: -1;
+}
+
+/* line 135, blackjack.scss */
+.counter {
+  position: absolute;
+  font-size: 1em;
+  color: white;
+  padding: 3px 5px;
+  right: -10px;
+  top: -8px;
+  border-radius: 6px;
+  background-color: black;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF000000', endColorstr='#FF000000');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(20%, #231f20), color-stop(80%, #231f20), color-stop(100%, #000000), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(top, #000000 0%, #231f20 20%, #231f20 80%, #000000 100%, #000000 100%);
+  background-image: -moz-linear-gradient(top, #000000 0%, #231f20 20%, #231f20 80%, #000000 100%, #000000 100%);
+  background-image: -o-linear-gradient(top, #000000 0%, #231f20 20%, #231f20 80%, #000000 100%, #000000 100%);
+  background-image: linear-gradient(top, #000000 0%, #231f20 20%, #231f20 80%, #000000 100%, #000000 100%);
+}
+
+/* line 154, blackjack.scss */
+#chips-counter, .chips-counter {
+  position: absolute;
+  right: 0;
+  top: -0.2em;
+  font-size: .825em;
+  color: white;
+  padding: 3px 5px;
+  display: none;
+  border-radius: 6px;
+  font-weight: bold;
+  background-color: black;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF000000', endColorstr='#FF000000');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(20%, #231f20), color-stop(80%, #231f20), color-stop(100%, #000000), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(top, #000000 0%, #231f20 20%, #231f20 80%, #000000 100%, #000000 100%);
+  background-image: -moz-linear-gradient(top, #000000 0%, #231f20 20%, #231f20 80%, #000000 100%, #000000 100%);
+  background-image: -o-linear-gradient(top, #000000 0%, #231f20 20%, #231f20 80%, #000000 100%, #000000 100%);
+  background-image: linear-gradient(top, #000000 0%, #231f20 20%, #231f20 80%, #000000 100%, #000000 100%);
+}
+
+/* line 176, blackjack.scss */
+#messages {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 35%;
+  left: 0%;
+  font-size: 48px;
+  font-family: sans-serif;
+}
+
+/* line 187, blackjack.scss */
+#setting-buttons {
+  position: absolute;
+  left: -60px;
+  right: none;
+  bottom: 10%;
+  overflow: hidden;
+  -webkit-transition: right 5s;
+  /* For Safari 3.1 to 6.0 */
+  transition: right 5s;
+  width: 235px;
+}
+
+/* line 198, blackjack.scss */
+#setting-buttons .button {
+  left: -80px;
+}
+/* line 201, blackjack.scss */
+#setting-buttons .button .btn-text {
+  padding: 16px 95px;
+  position: absolute;
+}
+/* line 205, blackjack.scss */
+#setting-buttons .button .btn-audio {
+  background: url("../img/audio_on.png") no-repeat;
+  width: 75%;
+  height: 75%;
+  background-size: contain;
+  display: inline-block;
+  margin: 8px 159px;
+}
+
+#setting-buttons .button.soundOff .btn-audio {
+  background: url("../img/audio_off.png") no-repeat;
+  background-size: contain;
+}
+/*#setting-buttons .button.soundOn .btn-audio {
+  background: url("../img/audio_on.png") no-repeat;
+}*/
+/* line 213, blackjack.scss */
+#setting-buttons .button .btn-setup {
+  background: url("../img/setup.png") no-repeat;
+  width: 87%;
+  height: 87%;
+  background-size: contain;
+  display: inline-block;
+  margin: 5px 153px;
+}
+/* line 222, blackjack.scss */
+#setting-buttons .button:active, #setting-buttons .button:focus, #setting-buttons .button:hover {
+  left: -10px;
+}
+
+/* line 227, blackjack.scss */
+#buttons {
+  position: absolute;
+  /*right: 16px;*/
+  right: 0px;
+  /* bottom: 12%; */
+  /*top: 45%;*/
+  top: 35%;
+  overflow: hidden;
+  -webkit-transition: right 5s;
+  /* For Safari 3.1 to 6.0 */
+  transition: right 5s;
+}
+
+/* line 241, blackjack.scss */
+.btn-text {
+  padding: 16px 30px;
+  position: absolute;
+}
+
+/* line 245, blackjack.scss */
+.button {
+  font-size: 30px;
+  font-family: sans-serif;
+  right: -80px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  /*background: url('../img/buttons_image.png') no-repeat top left;
+  background-position: 0px -188px; 
+  width: 183px; 
+  height: 48px; 
+  padding: 12px 6px 0px 0px;*/
+  background-color: #dd813d;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFDD813D', endColorstr='#FFC54320');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dd813d), color-stop(100%, #c54320));
+  background-image: -webkit-linear-gradient(top, #dd813d 0%, #c54320 100%);
+  background-image: -moz-linear-gradient(top, #dd813d 0%, #c54320 100%);
+  background-image: -o-linear-gradient(top, #dd813d 0%, #c54320 100%);
+  background-image: linear-gradient(top, #dd813d 0%, #c54320 100%);
+  width: 231px;
+  height: 65px;
+  border: 1px solid #FBE3D6;
+  border-radius: 10px;
+  color: #FFF;
+}
+/* line 292, blackjack.scss */
+.button:focus, .button:active, .button:hover {
+  background-color: #c54320;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFC54320', endColorstr='#FFC54320');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #c54320), color-stop(100%, #c54320));
+  background-image: -webkit-linear-gradient(top, #c54320 0%, #c54320 100%);
+  background-image: -moz-linear-gradient(top, #c54320 0%, #c54320 100%);
+  background-image: -o-linear-gradient(top, #c54320 0%, #c54320 100%);
+  background-image: linear-gradient(top, #c54320 0%, #c54320 100%);
+  box-shadow: inset 0px 0px 25px 0px rgba(0, 0, 0, 0.75);
+  right: -10px;
+}
+
+/* line 308, blackjack.scss */
+.greyed {
+  color: gray;
+  background-color: #3a373e;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF3A373E', endColorstr='#FF2C292F');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #3a373e), color-stop(100%, #2c292f));
+  background-image: -webkit-linear-gradient(top, #3a373e 0%, #2c292f 100%);
+  background-image: -moz-linear-gradient(top, #3a373e 0%, #2c292f 100%);
+  background-image: -o-linear-gradient(top, #3a373e 0%, #2c292f 100%);
+  background-image: linear-gradient(top, #3a373e 0%, #2c292f 100%);
+  border: 2px solid #6D6E71;
+  border-radius: 10px;
+  cursor: hand;
+  /*background-position: 0px -127px; */
+  /*width: 183px; 
+  height: 48px; 
+  padding: 12px 6px 0px 0px;
+  &:focus, &:active, &:hover{
+  	background-position: 0px -127px; width: 183px; height: 48px; 
+  }*/
+  width: 231px;
+  height: 65px;
+}
+/* line 332, blackjack.scss */
+.greyed:focus, .greyed:active, .greyed:hover {
+  right: -80px;
+  box-shadow: none;
+  background: none;
+}
+
+/* line 342, blackjack.scss */
+#bottom-strip, #bottom-strip-second {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-family: Verdana, sans-serif;
+  vertical-align: middle;
+  /* text-shadow: 1px 1px 1px #333; */
+  padding: .325rem 0;
+  background-color: #2c292f;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF2C292F', endColorstr='#FF000000');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2c292f), color-stop(2%, #595660), color-stop(4%, #3c373e), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(top, #2c292f 0%, #595660 2%, #3c373e 4%, #000000 100%);
+  background-image: -moz-linear-gradient(top, #2c292f 0%, #595660 2%, #3c373e 4%, #000000 100%);
+  background-image: -o-linear-gradient(top, #2c292f 0%, #595660 2%, #3c373e 4%, #000000 100%);
+  background-image: linear-gradient(top, #2c292f 0%, #595660 2%, #3c373e 4%, #000000 100%);
+  border-top: 1px solid #000;
+  color: #cccccc;
+}
+
+/*
+#bottom-strip-second {
+	animation-name: fadeIn;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+
+	-webkit-animation-name: fadeIn;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+}
+*/
+/* line 392, blackjack.scss */
+.focus {
+  -webkit-box-shadow: 16px 16px 14px rgba(50, 50, 50, 0.59);
+  -moz-box-shadow: 16px 16px 14px rgba(50, 50, 50, 0.59);
+  box-shadow: 16px 16px 14px rgba(50, 50, 50, 0.59);
+  z-index: -1;
+}
+
+/* line 398, blackjack.scss */
+.active-hand {
+  display: none;
+}
+
+/*.focus > .active-hand {
+	display: inline!important;
+	float: left;
+	transform: rotate(149deg);
+	left: -35%;
+	top: 10%;
+	position: absolute;
+	-webkit-animation: active-arrow 1s;
+	-webkit-animation-iteration-count: infinite;
+	animation: active-arrow 1s;
+	animation-iteration-count: infinite;
+}*/
+/* line 414, blackjack.scss */
+.absolute {
+  position: absolute;
+}
+
+/* line 418, blackjack.scss */
+.top {
+  top: 6px;
+}
+
+/* line 422, blackjack.scss */
+.left {
+  left: 12px;
+}
+
+/* line 426, blackjack.scss */
+.right {
+  right: 16px;
+}
+
+/* line 430, blackjack.scss */
+.small {
+  font-size: 12px;
+}
+
+/* line 434, blackjack.scss */
+.italic {
+  font-style: italic;
+}
+
+/* line 438, blackjack.scss */
+.normal {
+  font-size: 16px;
+}
+
+/* line 442, blackjack.scss */
+.middle-size {
+  font-size: 3rem;
+}
+
+/* line 446, blackjack.scss */
+.hidden {
+  display: none;
+}
+
+/* line 450, blackjack.scss */
+.invisible {
+  visibility: hidden;
+}
+
+/* line 454, blackjack.scss */
+.emgidy-logo {
+  font-variant: small-caps;
+}
+
+/* line 458, blackjack.scss */
+#hole-card {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  display: inline-block;
+  display: none;
+}
+
+/* line 468, blackjack.scss */
+#final-message{
+  position: absolute;
+  top: 0;
+  width:100%;
+  height: 100%;
+  z-index: 10000;
+  display: none;
+}
+
+#final-message-box{
+  position: relative;
+  top: 35%;
+  /*left: 20%;
+  right: 20%;
+  min-width: 20rem;*/
+  width: 100%;
+  /* display: inline-block; */
+  /*display: none;*/
+  text-align: center;
+  font-size: 2rem;
+  /*background: white;*/
+  padding: 1rem 1rem 1.5rem 1rem;
+  /*border-radius: 12px;*/
+  z-index: 10000;
+  color: white;
+  opacity: .95;
+  /*background-color: rgb(0,0,0); // Old browsers
+  @include filter-gradient(#000000, #000000, vertical); // IE6-9
+  @include background-image(linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(35,31,32,1) 20%,rgba(35,31,32,1) 80%,rgba(0,0,0,1) 100%,rgba(0,0,0,1) 100%));*/
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFE64548', endColorstr='#FFE60000');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(69, 72, 77, 0.9)), color-stop(100%, rgba(0, 0, 0, 0.9)));
+  background-image: -webkit-linear-gradient(top, rgba(69, 72, 77, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%);
+  background-image: -moz-linear-gradient(top, rgba(69, 72, 77, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%);
+  background-image: -o-linear-gradient(top, rgba(69, 72, 77, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%);
+  background-image: linear-gradient(top, rgba(69, 72, 77, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%);
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+}
+
+#final-message-2{
+  position: absolute;
+  top: 35%;
+  /*left: 20%;
+  right: 20%;
+  min-width: 20rem;*/
+  width: 100%;
+  /* display: inline-block; */
+  display: none;
+  text-align: center;
+  font-size: 2rem;
+  /*background: white;*/
+  padding: 1rem 1rem 1.5rem 1rem;
+  /*border-radius: 12px;*/
+  z-index: 10000;
+  color: white;
+  opacity: .95;
+  /*background-color: rgb(0,0,0); // Old browsers
+  @include filter-gradient(#000000, #000000, vertical); // IE6-9
+  @include background-image(linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(35,31,32,1) 20%,rgba(35,31,32,1) 80%,rgba(0,0,0,1) 100%,rgba(0,0,0,1) 100%));*/
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFE64548', endColorstr='#FFE60000');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(69, 72, 77, 0.9)), color-stop(100%, rgba(0, 0, 0, 0.9)));
+  background-image: -webkit-linear-gradient(top, rgba(69, 72, 77, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%);
+  background-image: -moz-linear-gradient(top, rgba(69, 72, 77, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%);
+  background-image: -o-linear-gradient(top, rgba(69, 72, 77, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%);
+  background-image: linear-gradient(top, rgba(69, 72, 77, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%);
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+}
+
+/* line 505, blackjack.scss */
+#chips {
+  position: absolute;
+  right: 16px;
+  bottom: 6rem;
+}
+/* line 511, blackjack.scss */
+#chips .arrow {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #FFF;
+  font-size: 1.5em;
+}
+/* line 517, blackjack.scss */
+#chips .arrow-img {
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+  padding: 5px 0 20px 0;
+  position: relative;
+  -webkit-animation: arrow-animate 1s;
+  -webkit-animation-iteration-count: infinite;
+  animation: arrow-animate 1s;
+  animation-iteration-count: infinite;
+}
+
+.bet-chip {
+  display: block;
+}
+
+@-webkit-keyframes arrow-animate {
+  /* line 531, blackjack.scss */
+  0% {
+    top: 0px;
+  }
+
+  /* line 532, blackjack.scss */
+  50% {
+    top: 20px;
+  }
+
+  /* line 533, blackjack.scss */
+  100% {
+    top: 0px;
+  }
+}
+
+@keyframes arrow-animate {
+  /* line 536, blackjack.scss */
+  0% {
+    top: 0px;
+  }
+
+  /* line 537, blackjack.scss */
+  50% {
+    top: 20px;
+  }
+
+  /* line 538, blackjack.scss */
+  100% {
+    top: 0px;
+  }
+}
+
+/* line 542, blackjack.scss */
+#bet-warning {
+  font-size: 2rem;
+  color: maroon;
+}
+
+/* line 548, blackjack.scss */
+#bet-state {
+  position: absolute;
+}
+
+/* line 552, blackjack.scss */
+#chips-bet-stack {
+  text-align: center;
+}
+
+/* line 558, blackjack.scss */
+.casino-chip {
+  background: url("../img/chip_colors_64.png") top left no-repeat;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* line 565, blackjack.scss */
+.assets {
+  background: url("../img/chip_colors_64.png") top left no-repeat;
+  display: inline-block;
+}
+
+/* line 596, blackjack.scss */
+.casino_chips_64 {
+  background: url("chip_colors_64.png") top left no-repeat;
+}
+
+/* line 597, blackjack.scss */
+.chips-cancel {
+  width: 24px;
+  height: 24px;
+  background-position: -370px 0px;
+}
+
+/* line 598, blackjack.scss */
+.chip5 {
+  width: 64px;
+  height: 64px;
+  background-position: -222px 0px;
+}
+
+/* line 599, blackjack.scss */
+.chip4 {
+  width: 64px;
+  height: 64px;
+  background-position: -148px 0px;
+}
+
+/* line 600, blackjack.scss */
+.chip3 {
+  width: 64px;
+  height: 64px;
+  background-position: -74px 0px;
+}
+
+/* line 601, blackjack.scss */
+.chip2 {
+  width: 64px;
+  height: 64px;
+  background-position: 0px 0px;
+}
+
+/* line 602, blackjack.scss */
+.chip1 {
+  width: 64px;
+  height: 64px;
+  background-position: -296px 0px;
+}
+
+/* line 612, blackjack.scss */
+.chip-empty {
+  width: 64px;
+  height: 64px;
+  background: none;
+}
+
+#insurance-bet {
+  position: absolute;
+  left: -100px;
+  margin-left: -38px;
+  display: none;
+}
+
+#insurance-bet .chip1 {
+  transform: scale(0.5,0.5);
+}
+
+#insurance-bet .chips-counter {
+  display: inline-block;
+  top: -0.1em;
+}
+/* line 619, blackjack.scss */
+#players-chips {
+  position: absolute;
+  /*bottom: 1.5*$chip-height;*/
+  bottom: 64px;
+  left: -64px;
+  margin-left: -38px;
+}
+/* line 628, blackjack.scss */
+#players-chips .casino-chip {
+  position: absolute;
+}
+
+/* line 633, blackjack.scss */
+#bets-annulate, .bets-annulate {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  display: none;
+  cursor: pointer;
+}
+
+/* line 657, blackjack.scss */
+.empty-card {
+  width: 105px;
+  height: 145px;
+  /* display: inline-block; */
+  border: 1px solid white;
+  border-radius: 6px;
+  position: absolute;
+  z-index: -1;
+  padding: 0 6px;
+}
+/* line 667, blackjack.scss */
+.empty-card span {
+  display: inline-block;
+  margin-top: 30%;
+  font: sans-serif;
+  /*font-weight: bold;*/
+  font-size: 15px;
+  color: white;
+  text-align: center;
+}
+
+/* line 686, blackjack.scss */
+#last-card-in-stack {
+  perspective: 800px;
+  -webkit-perspective: 800px;
+  width: 105px;
+  height: 145px;
+}
+
+/* line 693, blackjack.scss */
+.cards-for-flip {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 1s;
+  -webkit-transition: -webkit-transform 1s;
+}
+/* line 699, blackjack.scss */
+.cards-for-flip .front, .cards-for-flip .back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  height: 145px;
+  width: 105px;
+  position: absolute;
+}
+/* line 707, blackjack.scss */
+.cards-for-flip .back {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+/* line 718, blackjack.scss */
+.flipped {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+/* line 726, blackjack.scss */
+.badge {
+  /*position: absolute;
+  font-size: 10px;
+  top: -8px;
+  right: 0px;
+  //background: maroon;
+  //padding: 2px;
+  //color: white;
+  //border: 1px solid black;
+  //border-radius: 4px;
+  //font-weight: bold;
+  
+  background: url('../img/buttons_image.png') no-repeat top left;
+  background-position: 0px -249px; 
+  width: 24px; 
+  height: 21px; 
+  //padding: 12px 6px 0px 0px;
+  text-indent: -10000px;*/
+  position: absolute;
+  left: -60px;
+  top: 6px;
+  background: url("../img/gold-arrow.png") no-repeat top left;
+  background-size: contain;
+  width: 20px;
+  transform: rotate(149deg);
+  text-indent: -100000px;
+  -webkit-animation: active-arrow 1s;
+  -webkit-animation-iteration-count: infinite;
+  animation: active-arrow 1s;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes active-arrow {
+  /* line 760, blackjack.scss */
+  0% {
+    left: -60px;
+  }
+
+  /* line 761, blackjack.scss */
+  50% {
+    left: -40px;
+  }
+
+  /* line 762, blackjack.scss */
+  100% {
+    left: -60px;
+  }
+}
+
+@keyframes active-arrow {
+  /* line 766, blackjack.scss */
+  0% {
+    left: -60px;
+  }
+
+  /* line 767, blackjack.scss */
+  50% {
+    left: -40px;
+  }
+
+  /* line 768, blackjack.scss */
+  100% {
+    left: -60px;
+  }
+}
+
+/* line 772, blackjack.scss */
+#bets-limits {
+  /*margin-left: .2em;*/
+  margin-left: 4.2em;
+  width: 100px;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFE64548', endColorstr='#FFE60000');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(69, 72, 77, 0.5)), color-stop(100%, rgba(0, 0, 0, 0.5)));
+  background-image: -webkit-linear-gradient(top, rgba(69, 72, 77, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background-image: -moz-linear-gradient(top, rgba(69, 72, 77, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background-image: -o-linear-gradient(top, rgba(69, 72, 77, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background-image: linear-gradient(top, rgba(69, 72, 77, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+  border: 1px solid #2c2c2c;
+  border-bottom: 2px solid #73490F;
+  text-align: center;
+  padding: 5px 10px;
+  color: #FFF;
+  transform: rotate(-20deg);
+  box-shadow: -3px -3px 12px 0px rgba(0, 0, 0, 0.75);
+}
+/* line 791, blackjack.scss */
+#bets-limits span {
+  font-size: .4em;
+  position: absolute;
+}
+/* line 796, blackjack.scss */
+#bets-limits #bets-limit-min {
+  top: .8em;
+}
+/* line 800, blackjack.scss */
+#bets-limits #bets-limit-max {
+  bottom: .8em;
+}
+
+/* line 806, blackjack.scss */
+.orientation-warning-mask, #orientation-warning-mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background: #231f20 url("../img/rotate-screen-small.png");
+  z-index: 10000;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+  -o-background-position: center;
+  -moz-background-position: center;
+  -webkitbackground-position: center;
+  background-position: center;
+}
+
+/* Portrait orientation */
+@media only screen and (orientation: landscape) {
+  /* line 834, blackjack.scss */
+  #orientation-warning-mask {
+    display: none;
+  }
+}
+/* Landscape orientation */
+@media only screen and (orientation: portrait) {
+  /* line 841, blackjack.scss */
+  #orientation-warning-mask {
+    display: block;
+  }
+}
