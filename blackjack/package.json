@@ -14,5 +14,8 @@
     "grunt-contrib-uglify": "^0.6.0",
     "grunt-rev": "^0.1.0",
     "grunt-usemin": "^3.0.0"
+  },
+  "dependencies": {
+    "grunt": "^0.4.5"
   }
 }
