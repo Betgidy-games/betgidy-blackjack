@@ -62,6 +62,7 @@ function auth() {
     url: '/blackjack/auth',
     contentType: 'application/json',
     dataType: 'json',
+    data: '',
     success: function (data) {
       console.log(data);
       setTimeout(function () { init(); }, 1000);
