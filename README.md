@@ -1,6 +1,6 @@
 # Betgidy Blackjack #
 
-![Betgidy logo](https://avatars2.githubusercontent.com/u/13728707?v=3&s=200)
+[![Betgidy logo](https://avatars2.githubusercontent.com/u/13728707?v=3&s=200)](http://betgidy.com "Betgidy Website")
 
 Blackjack table game with backend logic handled via API
 
