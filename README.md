@@ -21,6 +21,13 @@ Access with /developer/blackjack/ route
 
 The production version will be available from /blackjack/
 
+## Deploying with Heroku ##
+
+[Heroku](http://heroku.com/ "Heroku") offers us 3 ways to deploy our app. Having a copy of the repo you can do it using [Heroku Toolbelt](https://toolbelt.heroku.com/), by connecting with [Github](https://devcenter.heroku.com/articles/github-integration) or [Dropbox](https://devcenter.heroku.com/articles/dropbox-sync).
+
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Betgidy-games/betgidy-blackjack)
+
 ## Contributors ##
 Feel free to fork and play as you feel. If you see any improvements that can be made to the master, let us know on the issue tracker.
 
