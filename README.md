@@ -21,7 +21,7 @@ Access with /developer/blackjack/ route
 
 The production version will be available from /blackjack/
 
-## Deploying with Heroku ##
+## Deploying to Heroku ##
 
 [Heroku](http://heroku.com/ "Heroku") offers us 3 ways to deploy our app. Having a copy of the repo you can do it using [Heroku Toolbelt](https://toolbelt.heroku.com/), by connecting with [Github](https://devcenter.heroku.com/articles/github-integration) or [Dropbox](https://devcenter.heroku.com/articles/dropbox-sync).
 
